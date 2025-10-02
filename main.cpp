@@ -4,7 +4,7 @@
 #include <string>
 #include <sstream>
 #include "pixel.h"
-
+#include "pixel_generator.h"
 
 void average_colors(std::vector<Pixel> &pixel_list);
 void flip_vertically(std::vector<Pixel> &pixel_list){
@@ -13,16 +13,14 @@ void flip_vertically(std::vector<Pixel> &pixel_list){
 		}
 	}
 
-	int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " <input_filename>" << std::endl;
-        return 1;
-    }
-
-    std::string filename = argv[1];
+int main(int argc, char* argv[]) {
+	
+		std::string filename = "pixels.dat";
+		generate_pixels_file("pixels.dat");
     std::vector<Pixel> pixel_list;
-
     std::ifstream infile(filename);
+
+		
     if (!infile.is_open()) {
         std::cerr << "Error opening file: " << filename << std::endl;
         return 1;
